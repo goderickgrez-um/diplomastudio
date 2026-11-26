@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="{{CSP}}">
+<meta name="color-scheme" content="light dark">
+<meta name="referrer" content="no-referrer">
+<title>Diplomas Studio</title>
+<style>{{CSS}}</style>
+</head>
+<body data-view="stage">
+<a class="skip" href="#stage">Saltar a la vista previa</a>
+<header class="top">
+  <h1>Diplomas Studio</h1>
+  <div class="grow"></div>
+  <div class="seg" role="group" aria-label="Tema de color" id="themeSeg">
+    <button type="button" data-theme="auto" aria-pressed="true">Auto</button>
+    <button type="button" data-theme="light" aria-pressed="false">Claro</button>
+    <button type="button" data-theme="dark" aria-pressed="false">Oscuro</button>
+  </div>
+  <button type="button" id="btnOpen">Abrir .json</button>
+  <button type="button" id="btnSave">Guardar .json</button>
+  <button type="button" id="btnExport" class="primary">Exportar…</button>
+</header>
+
+<nav class="tabs" role="group" aria-label="Secciones">
+  <button type="button" data-view="content">Contenido</button>
+  <button type="button" data-view="stage" aria-pressed="true">Vista</button>
+  <button type="button" data-view="design">Diseño</button>
+</nav>
+
+<div class="gbar" role="group" aria-label="Grupos de diplomas">
+  <label>Grupo <select id="grpSel"></select></label>
+  <label>Nombre del grupo <input data-k="name" maxlength="60" autocomplete="off"></label>
+  <button type="button" id="grpDup">Duplicar</button>
+  <button type="button" id="grpNew">+ Nuevo</button>
+  <button type="button" id="grpDel">Eliminar</button>
+</div>
+
+<main id="app">
+  <section id="pContent" class="panel" aria-labelledby="hContent">
+    <h2 id="hContent">Contenido</h2>
+    <label>Institución <input data-k="t.inst.text" maxlength="120" autocomplete="off"></label>
+    <label>Título <input data-k="t.title.text" maxlength="120" autocomplete="off"></label>
+
+    <div class="field">
+      <span id="lblBody">Texto del diploma</span>
+      <div class="seg" role="group" aria-label="Texto que se edita">
+        <button type="button" data-bm="1" aria-pressed="true">1 persona</button>
+        <button type="button" data-bm="2" aria-pressed="false">2 personas</button>
+      </div>
+      <div class="tools" id="tools" role="toolbar" aria-label="Formato del texto">
+        <button type="button" data-act="slot" data-n="1" class="primary">+ Espacio nombre 1</button>
+        <button type="button" data-act="slot" data-n="2" id="slot2">+ Espacio nombre 2</button>
+        <button type="button" data-act="size" data-d="-1" aria-label="Reducir el tamaño del texto seleccionado">A−</button>
+        <input type="number" id="selSize" min="4" max="200" step="1" aria-label="Tamaño del texto seleccionado en puntos">
+        <button type="button" data-act="size" data-d="1" aria-label="Aumentar el tamaño del texto seleccionado">A+</button>
+        <button type="button" data-act="b" aria-label="Negrita"><b>N</b></button>
+        <button type="button" data-act="i" aria-label="Cursiva"><i>K</i></button>
+      </div>
+      <div id="body" class="editor" contenteditable="true" role="textbox" aria-multiline="true" aria-labelledby="lblBody"></div>
+      <p class="hint">El espacio punteado se reemplaza por cada nombre. Las filas de la lista con «Nombre 2» usan el texto de 2 personas; las demás, el de 1 persona.</p>
+    </div>
+
+    <h3>Premiados</h3>
+    <label>Lista: Nombre ; RUT ; Nombre 2 ; RUT 2 (las dos últimas columnas son opcionales)
+      <textarea data-k="list" rows="7" spellcheck="false" aria-describedby="listInfo"></textarea>
+    </label>
+    <p id="listInfo" class="hint"></p>
+    <label class="check"><input type="checkbox" data-k="showRut"> Mostrar RUT en el diploma</label>
+    <div class="row"><button type="button" id="btnSheet">Importar Excel / CSV</button></div>
+    <label>Google Sheets (enlace compartido)
+      <span class="row"><input type="url" id="gsUrl" placeholder="https://docs.google.com/spreadsheets/d/…" autocomplete="off"><button type="button" id="btnGs">Importar</button></span>
+    </label>
+
+    <h3>Cuadros de texto</h3>
+    <div id="boxes"></div>
+    <button type="button" id="btnBox">+ Añadir cuadro de texto</button>
+
+    <h3>Quienes otorgan</h3>
+    <label>Cantidad de firmantes <input type="number" data-k="sign.n" min="1" max="6"></label>
+    <div id="signers"></div>
+
+    <h3>Logo</h3>
+    <div class="row"><button type="button" data-img="logo.src">Importar logo</button><button type="button" data-clear="logo.src">Quitar</button></div>
+    <label>Posición
+      <select data-k="logo.pos"><option value="top">Arriba al centro</option><option value="bottom">Abajo al medio de las firmas</option></select>
+    </label>
+    <label>Tamaño máximo (mm) <input type="number" data-k="logo.w" min="5" max="120"></label>
+  </section>
+
+  <section id="stage" class="stage" aria-label="Vista previa">
+    <div class="toolbar" role="group" aria-label="Navegación y zoom">
+      <button type="button" id="prev" aria-label="Diploma anterior">◀</button>
+      <output id="navLbl" aria-live="polite"></output>
+      <button type="button" id="next" aria-label="Diploma siguiente">▶</button>
+      <span class="grow"></span>
+      <button type="button" id="zOut" aria-label="Alejar">−</button>
+      <button type="button" id="zFit" aria-label="Ajustar a la ventana"><output id="zoomLbl">100%</output></button>
+      <button type="button" id="zIn" aria-label="Acercar">+</button>
+    </div>
+    <div class="work" id="work"><canvas id="cv" tabindex="0" role="img"></canvas></div>
+  </section>
+
+  <section id="pDesign" class="panel" aria-labelledby="hDesign">
+    <h2 id="hDesign">Diseño</h2>
+    <details open><summary>Plantillas</summary><div id="tpls" class="grid"></div></details>
+    <details open><summary>Página</summary>
+      <label>Tamaño <select id="pagePreset"></select></label>
+      <div class="row">
+        <label>Ancho (mm) <input type="number" data-k="page.w" min="60" max="1000"></label>
+        <label>Alto (mm) <input type="number" data-k="page.h" min="60" max="1000"></label>
+      </div>
+      <button type="button" id="btnSwap">Girar orientación</button>
+    </details>
+    <details open><summary>Fondo</summary>
+      <div class="row">
+        <label>Color <input type="color" data-k="bg.c1"></label>
+        <label>Color 2 <input type="color" data-k="bg.c2"></label>
+      </div>
+      <label class="check"><input type="checkbox" data-k="bg.grad"> Degradado entre ambos colores</label>
+      <label class="check"><input type="checkbox" data-k="bg.grain"> Textura de papel</label>
+      <div class="row"><button type="button" data-img="bg.src">Imagen de fondo</button><button type="button" data-clear="bg.src">Quitar</button></div>
+    </details>
+    <details open><summary>Marco</summary>
+      <div id="frameGal"></div>
+      <div class="row">
+        <label>Color principal <input type="color" data-k="frame.c1"></label>
+        <label>Color secundario <input type="color" data-k="frame.c2"></label>
+      </div>
+    </details>
+    <details open><summary>Tipografía y colores</summary>
+      <div id="roles"></div>
+      <button type="button" id="btnFont">Importar fuente (.ttf .otf .woff2)</button>
+    </details>
+    <details open><summary>Capas personalizadas</summary>
+      <div id="layers"></div>
+      <button type="button" id="btnLayer">+ Añadir capa (PNG, SVG, JPG)</button>
+    </details>
+  </section>
+</main>
+
+<footer class="status" id="status" role="status" aria-live="polite"></footer>
+
+<dialog id="dlg" aria-labelledby="dlgT">
+  <form method="dialog">
+    <h2 id="dlgT">Exportar diplomas</h2>
+    <label>Formato
+      <select data-k="exp.fmt"><option value="pdf">PDF con todos los diplomas</option><option value="png">PNG (un archivo por diploma; ZIP con una carpeta por grupo)</option></select>
+    </label>
+    <label>Grupos
+      <select data-k="exp.scope"><option value="all">Todos los grupos</option><option value="cur">Solo el grupo activo</option></select>
+    </label>
+    <label>Qué exportar
+      <select data-k="exp.which"><option value="all">Todos los diplomas de la lista (de cada grupo)</option><option value="current">Solo el diploma en pantalla</option><option value="blank">Plantilla en blanco (línea punteada)</option></select>
+    </label>
+    <label>Resolución
+      <select data-k="exp.dpi" data-num><option value="150">150 ppp (borrador)</option><option value="300">300 ppp (impresión)</option><option value="600">600 ppp (máxima, requiere mucha memoria)</option></select>
+    </label>
+    <fieldset id="xPdf"><legend>Opciones de PDF</legend>
+      <label>Papel <select data-k="exp.paper" id="xPaper" data-num></select></label>
+      <label>Margen (mm) <input type="number" data-k="exp.margin" min="0" max="50" step="1"></label>
+      <label class="check"><input type="checkbox" data-k="exp.lossless"> Sin pérdida (PNG dentro del PDF, archivo más pesado)</label>
+    </fieldset>
+    <progress id="xProg" hidden></progress>
+    <p id="xMsg" role="status" class="hint"></p>
+    <div class="row"><button value="cancel" id="xClose">Cerrar</button><button type="button" id="xGo" class="primary">Exportar</button></div>
+  </form>
+</dialog>
+{{SCRIPTS}}
+</body>
+</html>

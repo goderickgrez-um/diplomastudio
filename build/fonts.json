@@ -1,0 +1,247 @@
+[
+ {
+  "id": "cormorant-garamond",
+  "name": "Cormorant Garamond",
+  "cat": "elegant"
+ },
+ {
+  "id": "playfair-display",
+  "name": "Playfair Display",
+  "cat": "elegant"
+ },
+ {
+  "id": "cinzel",
+  "name": "Cinzel",
+  "cat": "elegant"
+ },
+ {
+  "id": "cinzel-decorative",
+  "name": "Cinzel Decorative",
+  "cat": "elegant"
+ },
+ {
+  "id": "libre-baskerville",
+  "name": "Libre Baskerville",
+  "cat": "serious"
+ },
+ {
+  "id": "merriweather",
+  "name": "Merriweather",
+  "cat": "serious"
+ },
+ {
+  "id": "lora",
+  "name": "Lora",
+  "cat": "serious"
+ },
+ {
+  "id": "source-serif-4",
+  "name": "Source Serif 4",
+  "cat": "serious"
+ },
+ {
+  "id": "eb-garamond",
+  "name": "EB Garamond",
+  "cat": "classic"
+ },
+ {
+  "id": "crimson-text",
+  "name": "Crimson Text",
+  "cat": "classic"
+ },
+ {
+  "id": "old-standard-tt",
+  "name": "Old Standard TT",
+  "cat": "classic"
+ },
+ {
+  "id": "im-fell-english",
+  "name": "IM Fell English",
+  "cat": "classic"
+ },
+ {
+  "id": "unifrakturcook",
+  "name": "UnifrakturCook",
+  "cat": "classic"
+ },
+ {
+  "id": "orbitron",
+  "name": "Orbitron",
+  "cat": "tech"
+ },
+ {
+  "id": "exo-2",
+  "name": "Exo 2",
+  "cat": "tech"
+ },
+ {
+  "id": "rajdhani",
+  "name": "Rajdhani",
+  "cat": "tech"
+ },
+ {
+  "id": "share-tech-mono",
+  "name": "Share Tech Mono",
+  "cat": "tech"
+ },
+ {
+  "id": "great-vibes",
+  "name": "Great Vibes",
+  "cat": "lettering"
+ },
+ {
+  "id": "allura",
+  "name": "Allura",
+  "cat": "lettering"
+ },
+ {
+  "id": "pinyon-script",
+  "name": "Pinyon Script",
+  "cat": "lettering"
+ },
+ {
+  "id": "parisienne",
+  "name": "Parisienne",
+  "cat": "lettering"
+ },
+ {
+  "id": "alex-brush",
+  "name": "Alex Brush",
+  "cat": "lettering"
+ },
+ {
+  "id": "sacramento",
+  "name": "Sacramento",
+  "cat": "lettering"
+ },
+ {
+  "id": "tangerine",
+  "name": "Tangerine",
+  "cat": "lettering"
+ },
+ {
+  "id": "dancing-script",
+  "name": "Dancing Script",
+  "cat": "lettering"
+ },
+ {
+  "id": "italianno",
+  "name": "Italianno",
+  "cat": "floral"
+ },
+ {
+  "id": "quintessential",
+  "name": "Quintessential",
+  "cat": "floral"
+ },
+ {
+  "id": "fondamento",
+  "name": "Fondamento",
+  "cat": "floral"
+ },
+ {
+  "id": "cormorant-upright",
+  "name": "Cormorant Upright",
+  "cat": "floral"
+ },
+ {
+  "id": "caveat",
+  "name": "Caveat",
+  "cat": "floral"
+ },
+ {
+  "id": "amatic-sc",
+  "name": "Amatic SC",
+  "cat": "floral"
+ },
+ {
+  "id": "special-elite",
+  "name": "Special Elite",
+  "cat": "vintage"
+ },
+ {
+  "id": "rye",
+  "name": "Rye",
+  "cat": "vintage"
+ },
+ {
+  "id": "abril-fatface",
+  "name": "Abril Fatface",
+  "cat": "vintage"
+ },
+ {
+  "id": "bevan",
+  "name": "Bevan",
+  "cat": "vintage"
+ },
+ {
+  "id": "vast-shadow",
+  "name": "Vast Shadow",
+  "cat": "vintage"
+ },
+ {
+  "id": "limelight",
+  "name": "Limelight",
+  "cat": "vintage"
+ },
+ {
+  "id": "fredoka",
+  "name": "Fredoka",
+  "cat": "kids"
+ },
+ {
+  "id": "baloo-2",
+  "name": "Baloo 2",
+  "cat": "kids"
+ },
+ {
+  "id": "chewy",
+  "name": "Chewy",
+  "cat": "kids"
+ },
+ {
+  "id": "pacifico",
+  "name": "Pacifico",
+  "cat": "kids"
+ },
+ {
+  "id": "patrick-hand",
+  "name": "Patrick Hand",
+  "cat": "kids"
+ },
+ {
+  "id": "sniglet",
+  "name": "Sniglet",
+  "cat": "kids"
+ },
+ {
+  "id": "bebas-neue",
+  "name": "Bebas Neue",
+  "cat": "sport"
+ },
+ {
+  "id": "oswald",
+  "name": "Oswald",
+  "cat": "sport"
+ },
+ {
+  "id": "anton",
+  "name": "Anton",
+  "cat": "sport"
+ },
+ {
+  "id": "teko",
+  "name": "Teko",
+  "cat": "sport"
+ },
+ {
+  "id": "russo-one",
+  "name": "Russo One",
+  "cat": "sport"
+ },
+ {
+  "id": "graduate",
+  "name": "Graduate",
+  "cat": "sport"
+ }
+]
